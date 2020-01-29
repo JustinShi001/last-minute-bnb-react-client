@@ -8,6 +8,13 @@ import SignUp from '../SignUp/SignUp'
 import SignIn from '../SignIn/SignIn'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
+import Apartments from '../apartments/Apartments'
+import Apartment from '../apartments/Apartment'
+
+// import Books from '../books/Books'
+// import Book from '../books/Book'
+// import BookCreate from '../books/BookCreate'
+// import BookEdit from '../books/BookEdit'
 
 class App extends Component {
   constructor () {
@@ -42,6 +49,12 @@ class App extends Component {
           />
         ))}
         <main className="container">
+          <Route exact path='/' render= { (props) => (
+            <Apartments match={props.match}/>
+          )}/>
+          <Route exact path='/apartments/:id' render= { (props) => (
+            <Apartment history= {props.history} match={props.match}/>
+          )}/>
           <Route path='/sign-up' render={() => (
             <SignUp alert={this.alert} setUser={this.setUser} />
           )} />
