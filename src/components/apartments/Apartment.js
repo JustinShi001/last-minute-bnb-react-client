@@ -40,7 +40,7 @@ render () {
     <div>
       <h2>{this.state.apartment.title}</h2>
       <h2>{this.state.apartment.location}</h2>
-      {this.props.user && (this.props.user._id === this.state.apartment.owner) &&
+      {this.props.user && (this.props.user.id === this.state.apartment.owner) &&
         (
           <div>
             <Link className="btn btn-primary" to={`/apartments/${this.props.match.params.id}/edit`}>Edit</Link>
