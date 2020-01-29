@@ -11,6 +11,7 @@ import ChangePassword from '../ChangePassword/ChangePassword'
 import Apartments from '../apartments/Apartments'
 import Apartment from '../apartments/Apartment'
 import ApartmentCreate from '../apartments/ApartmentCreate'
+import ApartmentEdit from '../apartments/ApartmentEdit'
 
 // import Books from '../books/Books'
 // import Book from '../books/Book'
@@ -53,11 +54,14 @@ class App extends Component {
           <Route exact path='/' render= { (props) => (
             <Apartments match={props.match}/>
           )}/>
-          <Route exact path='/apartments/:id' render= { (props) => (
-            <Apartment history= {props.history} match={props.match}/>
+          <Route user={user} path='/apartments/:id' render= { (props) => (
+            <Apartment history= {props.history} match={props.match} user={user}/>
           )}/>
           <AuthenticatedRoute user={user} path='/create-apartment' render={() => (
             <ApartmentCreate alert={this.alert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/apartments/:id/edit' render={({ match }) => (
+            <ApartmentEdit alert={this.alert} user={user} match={match}/>
           )} />
           <Route path='/sign-up' render={() => (
             <SignUp alert={this.alert} setUser={this.setUser} />

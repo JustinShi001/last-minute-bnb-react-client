@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
-import BookForm from './BookForm'
+import ApartmentForm from './ApartmentForm'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import { Redirect } from 'react-router-dom'
 
-class BookEdit extends Component {
+class ApartmentEdit extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      book: {
+      apartment: {
         title: '',
         author: ''
       },
@@ -18,17 +18,17 @@ class BookEdit extends Component {
 
   componentDidMount () {
     // console.log(this.props)
-    axios(`${apiUrl}/books/${this.props.match.params.id}`)
+    axios(`${apiUrl}/apartments/${this.props.match.params.id}`)
       .then(res => {
-        this.setState({ book: res.data.book })
+        this.setState({ apartment: res.data.apartment })
       })
       .catch(console.error)
   }
 
   handleChange = event => {
     this.setState({
-      book: {
-        ...this.state.book,
+      apartment: {
+        ...this.state.apartment,
         [event.target.name]: event.target.value
       }
     })
@@ -36,19 +36,19 @@ class BookEdit extends Component {
   handleSubmit = event => {
     event.preventDefault()
     axios({
-      url: `${apiUrl}/books/${this.props.match.params.id}`,
+      url: `${apiUrl}/apartments/${this.props.match.params.id}`,
       method: 'PATCH',
       headers: {
         'Authorization': `Token token=${this.props.user.token}`
       },
       data: {
-        book: this.state.book
+        apartment: this.state.apartment
       }
     })
       .then(res => this.setState({ update: true }))
       .then(() => this.props.alert({
         heading: 'Woot Woot',
-        message: 'Nice job! Book edited!',
+        message: 'Nice job! Apartment edited!',
         variant: 'success' }))
       .catch(() => this.props.alert({
         heading: 'Something wnet wrong',
@@ -58,11 +58,11 @@ class BookEdit extends Component {
 
   render () {
     if (this.state.createdId) {
-      return <Redirect to={`/books/${this.props.match.params.id}`} />
+      return <Redirect to={`/apartments/${this.props.match.params.id}`} />
     }
     return (
-      <BookForm
-        book={this.state.book}
+      <ApartmentForm
+        apartment={this.state.apartment}
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
       />
@@ -70,4 +70,4 @@ class BookEdit extends Component {
   }
 }
 
-export default BookEdit
+export default ApartmentEdit

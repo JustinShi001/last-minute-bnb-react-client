@@ -14,7 +14,7 @@ const ApartmentForm = ({ apartment, handleChange, handleSubmit }) => (
       type="text"
       value={apartment.location}
       onChange={handleChange}
-      name="author"
+      name="location"
     />
     <button type="submit">Submit</button>
   </form>
