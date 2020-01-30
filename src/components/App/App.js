@@ -12,6 +12,10 @@ import Apartments from '../apartments/Apartments'
 import Apartment from '../apartments/Apartment'
 import ApartmentCreate from '../apartments/ApartmentCreate'
 import ApartmentEdit from '../apartments/ApartmentEdit'
+import Reservations from '../reservations/Reservations'
+import Reservation from '../reservations/Reservation'
+import ReservationCreate from '../reservations/ReservationCreate'
+import ReservationEdit from '../reservations/ReservationEdit'
 
 // import Books from '../books/Books'
 // import Book from '../books/Book'
@@ -54,14 +58,26 @@ class App extends Component {
           <Route exact path='/' render= { (props) => (
             <Apartments match={props.match}/>
           )}/>
+          <Route exact path='/reservations' render= { (props) => (
+            <Reservations match={props.match}/>
+          )}/>
           <Route user={user} path='/apartments/:id' render= { (props) => (
             <Apartment history= {props.history} match={props.match} user={user}/>
+          )}/>
+          <Route user={user} path='/reservations/:id' render= { (props) => (
+            <Reservation history= {props.history} match={props.match} user={user}/>
           )}/>
           <AuthenticatedRoute user={user} path='/create-apartment' render={() => (
             <ApartmentCreate alert={this.alert} user={user} />
           )} />
           <AuthenticatedRoute user={user} exact path='/apartments/:id/edit' render={({ match }) => (
             <ApartmentEdit alert={this.alert} user={user} match={match}/>
+          )} />
+          <AuthenticatedRoute user={user} exact path='/reservations/:id/edit' render={({ match }) => (
+            <ReservationEdit alert={this.alert} user={user} match={match}/>
+          )} />
+          <AuthenticatedRoute user={user} path='/create-reservation' render={() => (
+            <ReservationCreate alert={this.alert} user={user} />
           )} />
           <Route path='/sign-up' render={() => (
             <SignUp alert={this.alert} setUser={this.setUser} />

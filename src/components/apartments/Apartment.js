@@ -22,7 +22,7 @@ class Apartment extends Component {
 handleDelete = () => {
   event.preventDefault()
   axios({
-    url: `${apiUrl}/apartments${this.props.match.params.id}`,
+    url: `${apiUrl}/apartments/${this.props.match.params.id}`,
     method: 'DELETE',
     headers: {
       'Authorization': `Bearer ${this.props.user.token}`
@@ -38,9 +38,11 @@ render () {
   }
   return (
     <div>
-      <h2>{this.state.apartment.title}</h2>
-      <p>{this.state.apartment.location}</p>
-      <p>{this.state.apartment.imageUrl}</p>
+      <h2>Apartment title: {this.state.apartment.title}</h2>
+      <p>Location: {this.state.apartment.location}</p>
+      <p>imageUrl: {this.state.apartment.imageUrl}</p>
+      <p>apartment_id: {this.state.apartment.id}</p>
+      <Link className="btn btn-secondary" to={'/create-reservation'}>create-reservation</Link>
       {this.props.user && (this.props.user.id === this.state.apartment.user.id) &&
         (
           <div>
@@ -54,3 +56,8 @@ render () {
 }
 
 export default Apartment
+
+// else if (this.props.user.id !== this.state.apartment.user.id) {
+//   return
+//     <Link className="btn btn-primary" to={`/reservations/create-reservation`}>create-reservation</Link>
+// }
