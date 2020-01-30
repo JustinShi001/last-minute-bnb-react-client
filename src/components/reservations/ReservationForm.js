@@ -4,14 +4,14 @@ const ReservationForm = ({ reservation, handleChange, handleSubmit }) => (
   <form onSubmit={handleSubmit}>
     <input
       placeholder="Reservation checkin_date"
-      type="text"
+      type="date"
       value={reservation.checkin_date}
       onChange={handleChange}
       name="checkin_date"
     />
     <input
       placeholder="Reservation checkout_date"
-      type="text"
+      type="date"
       value={reservation.checkout_date}
       onChange={handleChange}
       name="checkout_date"
