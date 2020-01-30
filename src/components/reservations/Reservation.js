@@ -38,8 +38,8 @@ render () {
   }
   return (
     <div>
-      <h2>{this.state.reservation.checkin_date}</h2>
-      <p>{this.state.reservation.checkout_date}</p>
+      <p>checkin: {this.state.reservation.checkin_date}</p>
+      <p>checkout: {this.state.reservation.checkout_date}</p>
       {this.props.user && (this.props.user.id === this.state.reservation.user.id) &&
         (
           <div>

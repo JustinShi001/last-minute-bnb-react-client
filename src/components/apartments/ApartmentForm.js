@@ -16,6 +16,13 @@ const ApartmentForm = ({ apartment, handleChange, handleSubmit }) => (
       onChange={handleChange}
       name="location"
     />
+    <input
+      placeholder="Link to image here"
+      type="text"
+      value={apartment.imageUrl}
+      onChange={handleChange}
+      name="imageUrl"
+    />
     <button type="submit">Submit</button>
   </form>
 )

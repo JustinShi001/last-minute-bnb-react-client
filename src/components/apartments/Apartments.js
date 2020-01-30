@@ -30,7 +30,8 @@ class Apartments extends Component {
     } else {
       apartmentsJsx = this.state.apartments.map(apartment => (
         <li className="list-group-item" key={apartment.id}>
-          <Link to={`/apartments/${apartment.id}`}>{apartment.title}</Link>
+          <img className="image-container-small"src={apartment.imageUrl} />
+          <Link to={`/apartments/${apartment.id}`}>{`          ${apartment.title}`}</Link>
         </li>
       ))
     }

@@ -38,9 +38,9 @@ render () {
   }
   return (
     <div>
+      <img className="image-container"src={this.state.apartment.imageUrl} />
       <h2>Apartment title: {this.state.apartment.title}</h2>
       <p>Location: {this.state.apartment.location}</p>
-      <p>imageUrl: {this.state.apartment.imageUrl}</p>
       <p>apartment_id: {this.state.apartment.id}</p>
       <p>reserved dates:
         {this.state.apartment.reservations.map(reservation => (
@@ -49,12 +49,13 @@ render () {
           </li>
         ))}
       </p>
-      <Link className="btn btn-secondary" to={'/create-reservation'}>create-reservation</Link>
+      <Link className="btn btn-secondary" to={'/create-reservation'}>create new reservation</Link>
+      <p></p>
       {this.props.user && (this.props.user.id === this.state.apartment.user.id) &&
         (
           <div>
-            <Link className="btn btn-primary" to={`/apartments/${this.props.match.params.id}/edit`}>Edit</Link>
-            <button className="btn btn-danger" onClick={this.handleDelete}>Delete</button>
+            <Link className="btn btn-primary" to={`/apartments/${this.props.match.params.id}/edit`}>Edit apartment</Link>
+            <button className="btn btn-danger" onClick={this.handleDelete}>Delete apartment</button>
           </div>
         )}
     </div>
@@ -63,6 +64,8 @@ render () {
 }
 
 export default Apartment
+
+// <p>imageUrl: {this.state.apartment.imageUrl}</p>
 
 // render () {
 //   let reservationsJsx = ''
