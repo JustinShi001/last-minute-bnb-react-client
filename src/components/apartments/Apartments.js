@@ -43,3 +43,9 @@ class Apartments extends Component {
 }
 
 export default Apartments
+
+// <p></p>
+// <p to={`/apartments/${apartment.id}`}>{`Reservation checkin_date:${apartment.reservations}`}</p>
+// <p></p>
+// <p to={`/apartments/${apartment.id}`}>{`Reservation checkout_date:${apartment.reservations.checkout_date}`}</p>
+// <p></p>
