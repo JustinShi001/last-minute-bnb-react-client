@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import apiUrl from '../../apiConfig'
 // import ListGroup from 'react-bootstrap'
 
 class Reservations extends Component {
@@ -13,7 +14,7 @@ class Reservations extends Component {
 
   componentDidMount () {
     axios({
-      url: 'http://localhost:4741/reservations',
+      url: `${apiUrl}/reservations`,
       method: 'GET'
     })
       .then(response => {
