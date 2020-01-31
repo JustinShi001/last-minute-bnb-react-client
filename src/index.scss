@@ -4,6 +4,25 @@
   width: 125px;
 }
 .image-container-small {
-  height: 35px;
-  width: 35px;
+  height: 150px;
+  width: 200px;
+  border-radius: 15px;
+}
+
+.list-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 20px;
+  padding: 20px;
+  border: black;
+  grid-row-gap: 50px;
+  font-family: monospace, sans-serif;
+}
+
+p {
+  margin: 1px;
+}
+
+.small-font {
+  font-size: 12px;
 }

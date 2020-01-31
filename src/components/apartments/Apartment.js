@@ -49,7 +49,10 @@ render () {
           </li>
         ))}
       </p>
-      <Link className="btn btn-secondary" to={'/create-reservation'}>create new reservation</Link>
+      {this.props.user && (this.props.user.id !== this.state.apartment.user.id) &&
+        (
+          <Link className="btn btn-secondary" to={'/create-reservation'}>create new reservation</Link>
+        )}
       <p></p>
       {this.props.user && (this.props.user.id === this.state.apartment.user.id) &&
         (
